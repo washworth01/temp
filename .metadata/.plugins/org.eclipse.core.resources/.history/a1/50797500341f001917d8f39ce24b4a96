@@ -1,0 +1,68 @@
+package com.ashworth.william.springboot.database.americanFootball.americanFootballSpringBootDatabaseApp.model;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotBlank;
+
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@Entity
+@Table(name = "user")
+@EntityListeners(AuditingEntityListener.class)
+@JsonIgnoreProperties(value = {"creationDate", "lastModified"}, allowGetters = true)
+public class AmericanFootballSpringBootModelUser implements Serializable
+{
+	@Id
+	@Column (name = "username") private String username;
+	
+	@NotBlank
+	@Column (name = "password") private String password;
+	
+	@NotBlank
+	@Column (name = "email_address") private String email_address;
+	
+	@NotBlank
+	@Column (name = "first_name") private String first_name;
+	
+	@NotBlank
+	@Column (name = "last_name") private float last_name;
+	
+	@Column (name = "age") private int age;
+	
+	@NotBlank
+	@Column (name = "rating") private String rating;
+	
+	@Column (name = "actors") private String actors;
+
+	public AmericanFootballSpringBootModel()
+	{
+		
+	}
+		
+	public AmericanFootballSpringBootModel(String username, String password, String email_address, float price, int length, String rating, String actors)
+	{
+		this.username = username;
+		this.password = password;
+		this.email_address = email_address;
+		this.first_name = first_name;
+		this.length = length;
+		this.rating = rating;
+		this.actors = actors;
+	}
+
+	
+}
